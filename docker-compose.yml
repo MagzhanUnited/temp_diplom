@@ -4,7 +4,7 @@ services:
     build: ./apollo-nuxt
     ports:
       - "89.46.33.148:2001:2001"
-      - "24678:24679"
+      - "1234:1234"
 
   backend:
     build:

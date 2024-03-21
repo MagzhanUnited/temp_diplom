@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 2003
 
-CMD ["npm", "run", "serve", "--", "--port" ,"2003"]
+CMD ["npm", "run", "serve", "--", "--port" ,"2003",  "--host", "0.0.0.0"]

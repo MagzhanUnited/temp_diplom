@@ -14,7 +14,7 @@ A few things to note in the project:
 - **[Gorilla Mux](https://go.mongodb.org/mongo-driver)** - HTTP request multiplexer.
 - **[jwt-go](https://github.com/dgrijalva/jwt-go)** - Implementation of JWT Tokens.
 - **[Validator](https://gopkg.in/go-playground/validator.v9)** - Package validator implements value validations for structs.
-<!-- * **[OpenAPI 3.0 Spec](https://github.com/sidhantpanda/docker-express-typescript-boilerplate/blob/master/openapi.json)** - A starter template to get started with API documentation using OpenAPI 3.0. This API spec is also available when running the development server at `http://194.4.58.178:5000/dev/api-docs` -->
+<!-- * **[OpenAPI 3.0 Spec](https://github.com/sidhantpanda/docker-express-typescript-boilerplate/blob/master/openapi.json)** - A starter template to get started with API documentation using OpenAPI 3.0. This API spec is also available when running the development server at `http://89.46.33.148:2001/dev/api-docs` -->
 - **[.env file for configuration](#environment)** - Change server config like app port, mongo url etc
 - **[File Uploads](https://golang.org/pkg/io/)** - io package provides interfaces to I/O primitives.
 - **[httptest](#testing)** - Utilities for HTTP testing.
@@ -46,9 +46,9 @@ $ go run main.go routes.go
 
 Running the above commands results in
 
-- 🌏 **API Server** running at `http://194.4.58.178:8080`
-<!-- * ⚙️**Swagger UI** at `http://194.4.58.178:5000/dev/api-docs` -->
-- ⛁ **MongoDB** running at `mongodb://194.4.58.178:27017/db`
+- 🌏 **API Server** running at `http://89.46.33.148:2003`
+<!-- * ⚙️**Swagger UI** at `http://89.46.33.148:2001/dev/api-docs` -->
+- ⛁ **MongoDB** running at `mongodb://89.46.33.148:27017/db`
 
 ## Packaging and Deployment
 
@@ -69,7 +69,7 @@ $ go test
 
 ```
 $ docker build -t api-server .
-$ docker run -t -i -p 8080:8080 api-server
+$ docker run -t -i -p 2003:2003 api-server
 ```
 
 #### 4. Run with docker-compose
@@ -87,8 +87,8 @@ To edit environment variables, create a file with name `.env` and copy the conte
 | Var Name   | Type   | Default                           | Description                   |
 | ---------- | ------ | --------------------------------- | ----------------------------- |
 | JWT_SECRET | string | `secret`                          | JWT secret to verify          |
-| PORT       | number | `8080`                            | Port to run the API server on |
-| MONGO_URL  | string | `mongodb://194.4.58.178:27017/db` | URL for MongoDB               |
+| PORT       | number | `2003`                            | Port to run the API server on |
+| MONGO_URL  | string | `mongodb://89.46.33.148:27017/db` | URL for MongoDB               |
 
 <!-- ## Logging
 The application uses [winston](https://github.com/winstonjs/winston) as the default logger. The configuration file is at `src/logger.ts`.

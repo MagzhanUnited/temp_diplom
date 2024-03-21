@@ -8,7 +8,7 @@
         </p>
         <pre class="app-code"><code>npm install</code></pre>
 
-        <p>Next step is running the application using the serve script and navigate to <i>http://194.4.58.178:5000/</i> to view the application. That is it, you may now start with the development using the Apollo template.</p>
+        <p>Next step is running the application using the serve script and navigate to <i>http://89.46.33.148:2001/</i> to view the application. That is it, you may now start with the development using the Apollo template.</p>
 
         <pre class="app-code"><code>npm run dev</code></pre>
 

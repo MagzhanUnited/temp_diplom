@@ -33,7 +33,7 @@ const initChart = () => {
         datasets: [
             {
                 label: 'Income',
-                data: [6500, 5900, 8000, 8100, 5600, 5500, 4000],
+                data: [6500, 5900, 2002, 8100, 5600, 5500, 4000],
                 fill: false,
                 tension: 0.4,
                 borderColor: documentStyle.getPropertyValue('--green-500')

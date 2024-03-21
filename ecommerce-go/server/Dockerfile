@@ -1,7 +1,7 @@
 FROM golang:latest
 
 ENV GO111MODULE=on
-ENV PORT=8000
+ENV PORT=2002
 WORKDIR /app
 COPY go.mod /app
 COPY go.sum /app

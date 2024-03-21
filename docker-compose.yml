@@ -3,14 +3,14 @@ services:
   web:
     build: ./apollo-nuxt
     ports:
-      - "194.4.58.178:5000:5000"
+      - "89.46.33.148:2001:2001"
       - "24678:24678"
 
   backend:
     build:
       context: ./ecommerce-go/server
     ports:
-      - "194.4.58.178:8000:8000"
+      - "89.46.33.148:2002:2002"
     environment:
       - TZ=Asia/Almaty
 
@@ -21,4 +21,4 @@ services:
     container_name: vue-app
     restart: always
     ports:
-      - "194.4.58.178:8080:8080"
+      - "89.46.33.148:2003:2003"

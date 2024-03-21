@@ -1,26 +1,26 @@
-version: '3.3'
+version: "3.3"
 services:
   api:
     build: .
     ports:
-      - '8080'
+      - "2003"
     volumes:
       - .:/app
     depends_on:
-      - 'mongo'
+      - "mongo"
   web:
-    container_name: 'web'
-    image: 'nginx:latest'
+    container_name: "web"
+    image: "nginx:latest"
     ports:
-      - '80:80'
+      - "80:80"
     volumes:
       - ./nginx/dev.conf.d:/etc/nginx/conf.d
     depends_on:
-      - 'api'
+      - "api"
   mongo:
-    image: 'mongo:latest'
-    container_name: 'mongo'
+    image: "mongo:latest"
+    container_name: "mongo"
     ports:
-      - '27100:27017'
+      - "27100:27017"
     volumes:
       - ./data/dev/mongo:/data/db

@@ -52,7 +52,7 @@
               <img
                 slot="cover"
                 alt="example"
-                :src="`http://194.4.58.178:8000/static/${item.thumbnail[0]}`"
+                :src="`http://89.46.33.148:2002/static/${item.thumbnail[0]}`"
               />
               <a-card-meta>
                 <span slot="title">
@@ -131,7 +131,7 @@ export default {
     // setItemInStore(data) {},
     async getAllProducts(cat) {
       const response = await axios(
-        `http://194.4.58.178:8000/residentialas/${cat}`,
+        `http://89.46.33.148:2002/residentialas/${cat}`,
         {
           withCredentials: true,
         }

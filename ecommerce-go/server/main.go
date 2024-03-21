@@ -17,14 +17,14 @@ func hello(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 	port := middlewares.DotEnvVariable("PORT")
-	color.Cyan("🌏 Server running on 89.46.33.148:" + port)
+	color.Cyan("🌏 Server running on localhost:" + port)
 
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 	router := routes.Routes()
 	c := cors.New(cors.Options{
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE"},
 		AllowedHeaders:   []string{"Content-Type", "Origin", "Accept", "*"},
-		AllowedOrigins:   []string{"http://89.46.33.148:2001", "http://89.46.33.148:2003"},
+		AllowedOrigins:   []string{"http://localhost:2001", "http://localhost:2003", "http://89.46.33.148:2001", "http://89.46.33.148:2003"},
 		AllowCredentials: true, // Enable credentials
 	})
 

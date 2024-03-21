@@ -7,7 +7,7 @@
 main
 
 # exclude everything
-uploaded/*
+# uploaded/*
 
 # exception to the rule
 !uploaded/.gitkeep 

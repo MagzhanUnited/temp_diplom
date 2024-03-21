@@ -265,7 +265,7 @@ initFilters();
                     <Column header="Image" headerStyle="width:14%; min-width:10rem;">
                         <template #body="slotProps">
                             <span class="p-column-title">Image</span>
-                            <img :src="'http://localhost:2002/static/' + slotProps.data.thumbnail[0]" :alt="slotProps.data.thumbnail[0]" class="shadow-2" width="100" />
+                            <img :src="'http://89.46.33.148:2002/static/' + slotProps.data.thumbnail[0]" :alt="slotProps.data.thumbnail[0]" class="shadow-2" width="100" />
                         </template>
                     </Column>
                     <Column field="discountPercentage" header="Скидка" :sortable="true" headerStyle="width:14%; min-width:8rem;">
@@ -301,9 +301,9 @@ initFilters();
                 </DataTable>
 
                 <Dialog v-model:visible="productDialog" :style="{ width: '450px' }" header="Product Details" :modal="true" class="p-fluid">
-                    <img :src="'http://localhost:2002/static/' + product.thumbnail[0]" :alt="product.thumbnail[0]" v-if="product.thumbnail" width="150" class="mt-0 mx-auto mb-5 block shadow-2" />
-                    <!-- <FileUpload v-else mode="basic" name="demo[]" url="http://localhost:2002/upload" accept="image/*" :maxFileSize="1000000" customUpload @uploader="customBase64Uploader" style="margin-top: 2dvh; margin-bottom: 2dvh" /> -->
-                    <FileUpload v-else mode="advanced" name="demo[]" url="http://localhost:2002/upload" :showUploadButton="false" :multiple="true" ref="fileUpload" accept="image/*" :maxFileSize="10000000" @uploader="customBase64Uploader">
+                    <img :src="'http://89.46.33.148:2002/static/' + product.thumbnail[0]" :alt="product.thumbnail[0]" v-if="product.thumbnail" width="150" class="mt-0 mx-auto mb-5 block shadow-2" />
+                    <!-- <FileUpload v-else mode="basic" name="demo[]" url="http://89.46.33.148:2002/upload" accept="image/*" :maxFileSize="1000000" customUpload @uploader="customBase64Uploader" style="margin-top: 2dvh; margin-bottom: 2dvh" /> -->
+                    <FileUpload v-else mode="advanced" name="demo[]" url="http://89.46.33.148:2002/upload" :showUploadButton="false" :multiple="true" ref="fileUpload" accept="image/*" :maxFileSize="10000000" @uploader="customBase64Uploader">
                         <template #empty>
                             <p>Перетащите картинки дома сюда.</p>
                         </template>
@@ -364,7 +364,7 @@ initFilters();
                             <InputText id="builder" v-model="product.builder" />
                         </div>
                     </div>
-                    <!-- <FileUpload v-if="!product.thumbnail" mode="advanced" name="demo[]" url="http://localhost:2002/upload" :showUploadButton="false" :multiple="true" ref="fileUpload" accept="image/*" :maxFileSize="10000000" @upload="onUpload">
+                    <!-- <FileUpload v-if="!product.thumbnail" mode="advanced" name="demo[]" url="http://89.46.33.148:2002/upload" :showUploadButton="false" :multiple="true" ref="fileUpload" accept="image/*" :maxFileSize="10000000" @upload="onUpload">
                         <template #empty>
                             <p>Перетащите схему дома сюда.</p>
                         </template>
@@ -373,7 +373,7 @@ initFilters();
                         v-if="!product.thumbnail"
                         mode="advanced"
                         name="demo[]"
-                        url="http://localhost:2002/upload"
+                        url="http://89.46.33.148:2002/upload"
                         :showUploadButton="false"
                         :multiple="true"
                         ref="schemasUpload"

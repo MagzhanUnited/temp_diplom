@@ -1,13 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     devServer: {
-        host: '0.0.0.0',
+        host: '89.46.33.148',
         port: 2001
     },
     vite: {
         server: {
             hmr: {
-                clientPort: 1234
+                port: 1234,
+                host: '89.46.33.148'
             }
         }
     },

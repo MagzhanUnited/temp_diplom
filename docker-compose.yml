@@ -3,7 +3,7 @@ services:
   web:
     build: ./apollo-nuxt
     ports:
-      - "194.4.58.178:3000:3000"
+      - "194.4.58.178:5000:5000"
       - "24678:24678"
 
   backend:

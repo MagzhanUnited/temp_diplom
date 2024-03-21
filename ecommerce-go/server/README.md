@@ -14,7 +14,7 @@ A few things to note in the project:
 - **[Gorilla Mux](https://go.mongodb.org/mongo-driver)** - HTTP request multiplexer.
 - **[jwt-go](https://github.com/dgrijalva/jwt-go)** - Implementation of JWT Tokens.
 - **[Validator](https://gopkg.in/go-playground/validator.v9)** - Package validator implements value validations for structs.
-<!-- * **[OpenAPI 3.0 Spec](https://github.com/sidhantpanda/docker-express-typescript-boilerplate/blob/master/openapi.json)** - A starter template to get started with API documentation using OpenAPI 3.0. This API spec is also available when running the development server at `http://194.4.58.178:3000/dev/api-docs` -->
+<!-- * **[OpenAPI 3.0 Spec](https://github.com/sidhantpanda/docker-express-typescript-boilerplate/blob/master/openapi.json)** - A starter template to get started with API documentation using OpenAPI 3.0. This API spec is also available when running the development server at `http://194.4.58.178:5000/dev/api-docs` -->
 - **[.env file for configuration](#environment)** - Change server config like app port, mongo url etc
 - **[File Uploads](https://golang.org/pkg/io/)** - io package provides interfaces to I/O primitives.
 - **[httptest](#testing)** - Utilities for HTTP testing.
@@ -47,7 +47,7 @@ $ go run main.go routes.go
 Running the above commands results in
 
 - 🌏 **API Server** running at `http://194.4.58.178:8080`
-<!-- * ⚙️**Swagger UI** at `http://194.4.58.178:3000/dev/api-docs` -->
+<!-- * ⚙️**Swagger UI** at `http://194.4.58.178:5000/dev/api-docs` -->
 - ⛁ **MongoDB** running at `mongodb://194.4.58.178:27017/db`
 
 ## Packaging and Deployment

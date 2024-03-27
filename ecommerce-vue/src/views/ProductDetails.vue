@@ -9,7 +9,7 @@
             <a-col :span="12">
               <div class="image-box">
                 <img
-                  :src="`http://10.255.184.3:2002/static/${product.thumbnail[0]}`"
+                  :src="`https://realestate.enu.kz/api/static/${product.thumbnail[0]}`"
                   alt=""
                   width="100%"
                 />
@@ -43,7 +43,7 @@
         :key="index"
       >
         <img
-          :src="`http://10.255.184.3:2002/static/${schema}`"
+          :src="`https://realestate.enu.kz/api/static/${schema}`"
           alt=""
           width="100%"
           style="margin-left: 10px; margin-right: 10px"
@@ -80,7 +80,9 @@ export default {
       return;
     }
 
-    const { data } = await axios(`http://10.255.184.3:2002/residential/${id}`);
+    const { data } = await axios(
+      `https://realestate.enu.kz/api/residential/${id}`
+    );
     console.log({ data }.data.data);
 
     this.product = { data }.data.data;

@@ -13,7 +13,7 @@
       </div>
       <div v-for="(item, index) in items" :key="index" class="carousel-wrapper">
         <img
-          :src="`http://10.255.184.3:2002/static/${item}`"
+          :src="`https://realestate.enu.kz/api/static/${item}`"
           width="100%"
           alt=""
         />

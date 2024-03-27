@@ -52,7 +52,7 @@
               <img
                 slot="cover"
                 alt="example"
-                :src="`http://10.255.184.3:2002/static/${item.thumbnail[0]}`"
+                :src="`https://realestate.enu.kz/api/static/${item.thumbnail[0]}`"
               />
               <a-card-meta>
                 <span slot="title">
@@ -131,7 +131,7 @@ export default {
     // setItemInStore(data) {},
     async getAllProducts(cat) {
       const response = await axios(
-        `http://10.255.184.3:2002/residentialas/${cat}`,
+        `https://realestate.enu.kz/api/residentialas/${cat}`,
         {
           withCredentials: true,
         }

@@ -13,33 +13,39 @@
       </div>
       <div class="carousel-wrapper">
         <img
-          src="https://themepure.net/template/vue/vue/img/bg/bg.jpg"
+          src="../assets/images/banner/WhatsApp Image 2024-03-27 at 9.46.08 PM-2.jpeg"
           width="100%"
           alt=""
         />
-        <div>
-          <a-row type="flex" justify="end" style="margin-right: 30px">
-            <a-col :span="14">
-              <h2>Furniture</h2>
-              <p class="smallfont">
-                The vital part of every home is furniture, and it’s the first
-                thing to be considered while planning a home decor. Your home
-                furniture has to be presentable and classy, as it depicts your
-                values and mood. It also represents the first impression of your
-                home, and we are sure that you want it to look luxurious and
-                stylish. Always choose to buy furniture online in Pakistan from
-                reputed online furniture and decor store.
-              </p>
-            </a-col>
-          </a-row>
-        </div>
-      </div>
-      <div class="carousel-wrapper">
-        <img src="../assets/images/banner/c1.jpeg" width="100%" alt="" />
       </div>
 
       <div class="carousel-wrapper">
-        <img src="../assets/images/banner/c2.jpeg" width="100%" alt="" />
+        <img
+          src="../assets/images/banner/WhatsApp Image 2024-03-27 at 9.46.08 PM-3.jpeg"
+          width="100%"
+          alt=""
+        />
+      </div>
+      <div class="carousel-wrapper">
+        <img
+          src="../assets/images/banner/WhatsApp Image 2024-03-27 at 9.46.08 PM.jpeg"
+          width="100%"
+          alt=""
+        />
+      </div>
+      <div class="carousel-wrapper">
+        <img
+          src="../assets/images/banner/WhatsApp Image 2024-03-27 at 9.46.09 PM-2.jpeg"
+          width="100%"
+          alt=""
+        />
+      </div>
+      <div class="carousel-wrapper">
+        <img
+          src="../assets/images/banner/WhatsApp Image 2024-03-27 at 9.46.09 PM.jpeg"
+          width="100%"
+          alt=""
+        />
       </div>
     </a-carousel>
   </div>
@@ -52,6 +58,12 @@ export default {
 </script>
 
 <style scoped>
+.img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Remove any default inline block behavior */
+  margin: 0 auto; /* Center the image */
+}
 .ant-carousel >>> .slick-slide {
   text-align: center;
   height: 500px;

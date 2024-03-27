@@ -5,14 +5,6 @@ export default defineNuxtConfig({
         host: '0.0.0.0',
         port: 2001
     },
-    vite: {
-        server: {
-            hmr: {
-                port: 1234,
-                host: '0.0.0.0'
-            }
-        }
-    },
     typescript: false,
     app: {
         head: {

@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+  web:
+    build: ./apollo-nuxt
+    ports:
+      - "192.168.1.67:2001:2001"
+      - "1234:1234"
+
+  backend:
+    build:
+      context: ./ecommerce-go/server
+    ports:
+      - "192.168.1.67:2002:2002"
+    environment:
+      - TZ=Asia/Almaty
+
+  vue-app:
+    build:
+      context: ./ecommerce-vue
+      dockerfile: Dockerfile
+    container_name: vue-app
+    restart: always
+    ports:
+      - "192.168.1.67:2003:2003"

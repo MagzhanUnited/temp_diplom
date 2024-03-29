@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     },
     typescript: false,
     app: {
-        baseURL: '/admin',
         head: {
             title: 'PrimeVue Apollo Nuxt',
             link: [

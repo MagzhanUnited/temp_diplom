@@ -38,6 +38,13 @@
             </h2>
           </a-col>
         </a-row>
+        <a-input-search
+          placeholder="input search text"
+          enter-button
+          style="width: 250px"
+          @search="onSearch"
+          v-model="filter"
+        />
         <a-row :gutter="[20, 20]" v-if="items">
           <a-col
             class="gutter-row"
@@ -89,6 +96,84 @@
         </a-row>
       </template>
     </div> -->
+    <hr class="solid" style="margin-top: 30px; margin-bottom: 30px" />
+    <iframe
+      width="520"
+      height="415"
+      src="https://www.youtube.com/embed/616Vp9ml4Ac"
+    >
+    </iframe>
+    <hr class="solid" style="margin-top: 30px; margin-bottom: 30px" />
+    <div style="width: 100%; display: flex; flex-direction: row">
+      <div
+        style="
+          align-items: center;
+          align-content: center;
+          align-self: center;
+          width: 30%;
+        "
+      >
+        <h1>Заказать звонок</h1>
+        <h3 style="color: grey">Ответим на интересующие вас вопросы</h3>
+        <h3 style="color: grey">и расскажем подробнее о проекте.</h3>
+      </div>
+      <div>
+        <a-form
+          :form="form"
+          @submit="handleSubmit"
+          style="margin-left: 30%; align-items: start"
+        >
+          <a-form-item class="custom-label" label="">
+            <div class="input-container">
+              <span class="custom-label-text">Номер телефона</span>
+              <a-input
+                v-model="order.number"
+                style="width: 400px; height: 45px"
+                placeholder="+7 (___) ___ - __ - __"
+              />
+            </div>
+          </a-form-item>
+
+          <a-form-item class="custom-label" label="">
+            <div class="input-container">
+              <span class="custom-label-text">Город</span>
+              <a-input
+                v-model="order.city"
+                style="width: 400px; height: 45px"
+                placeholder="Астана"
+              />
+            </div>
+          </a-form-item>
+          <a-form-item class="custom-label" label="">
+            <div class="input-container">
+              <span class="custom-label-text">Ваше имя</span>
+              <a-input
+                v-model="order.name"
+                style="width: 400px; height: 45px"
+              />
+            </div>
+          </a-form-item>
+          <a-form-item class="custom-label">
+            <div class="input-container">
+              <a-button
+                type="primary"
+                html-type="submit"
+                style="width: 400px; height: 50px"
+                >Заказать звонок</a-button
+              >
+            </div>
+          </a-form-item>
+        </a-form>
+      </div>
+      <img
+        height="348"
+        width="351"
+        src="https://s3.bi.group/biclick/content-manager/callback_3272c70d9f.svg"
+        alt=""
+        class="c-gZsuB"
+        style="margin-left: 20%"
+      />
+    </div>
   </div>
 </template>
 
@@ -115,6 +200,13 @@ export default {
   },
   data() {
     return {
+      filter: "",
+      form: this.$form.createForm(this),
+      order: {
+        number: "",
+        city: "",
+        name: "",
+      },
       // items: null,
       categories: ["Все", "Квартира", "Офис", "Участок", "Паркинг"],
     };
@@ -129,6 +221,9 @@ export default {
       "sortDescendingAction",
     ]),
     // setItemInStore(data) {},
+    async onSearch() {
+      console.log("filter:", this.filter);
+    },
     async getAllProducts(cat) {
       const response = await axios(
         `https://realestate.enu.kz/api/residentialas/${cat}`,
@@ -145,6 +240,14 @@ export default {
       await this.getAllProducts(cat);
       // this.$router.push('/');
     },
+    handleSubmit() {
+      // Handle form submission here, for example, send data to the server
+      console.log("Form submitted:", this.order);
+      // Reset form fields
+      this.form.resetFields();
+      // You can also emit an event to notify parent component about the order
+      this.$emit("order-placed", this.order);
+    },
 
     openThisProduct(item) {
       this.$router.push({ name: "productDetails", params: { id: item._id } });
@@ -158,6 +261,20 @@ export default {
 </script>
 
 <style scoped>
+.input-container {
+  display: flex;
+  flex-direction: column; /* Align items in a column */
+  align-items: flex-start;
+}
+.custom-label .ant-form-item-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.custom-label .custom-label-text {
+  font-weight: bold; /* optional: make the label bold */
+  margin-right: 8px; /* optional: add some space between label and input */
+}
 .name {
   font-weight: 600;
   text-transform: capitalize;
@@ -181,4 +298,3 @@ export default {
   font-style: oblique;
 }
 </style>
->

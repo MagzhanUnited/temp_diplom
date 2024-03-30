@@ -2,6 +2,8 @@
 export default defineNuxtConfig({
     vite: {
         server: {
+            port: 5173,
+            strictPort: true,
             hmr: {
                 protocol: 'ws',
                 host: '10.255.184.3',
@@ -12,6 +14,17 @@ export default defineNuxtConfig({
     devServer: {
         host: '0.0.0.0',
         port: 2001
+    },
+    hooks: {
+        'vite:extendConfig'(viteInlineConfig, env) {
+            viteInlineConfig.server = {
+                ...viteInlineConfig.server,
+                hmr: {
+                    protocol: 'ws',
+                    host: 'localhost'
+                }
+            };
+        }
     },
     typescript: false,
     app: {

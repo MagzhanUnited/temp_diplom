@@ -7,6 +7,7 @@ import { parentPort, threadId } from 'node:worker_threads';
 import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, createApp, createRouter as createRouter$1, toNodeListener, fetchWithEvent, lazyEventHandler, getQuery as getQuery$1, createError, getResponseStatusText } from 'file:///Users/magzhanzhumabaev/Desktop/temp_project/apollo-nuxt/node_modules/h3/dist/index.mjs';
 import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Users/magzhanzhumabaev/Desktop/temp_project/apollo-nuxt/node_modules/vue-bundle-renderer/dist/runtime.mjs';
 import { stringify, uneval } from 'file:///Users/magzhanzhumabaev/Desktop/temp_project/apollo-nuxt/node_modules/devalue/index.js';
+import { renderToString } from 'file:///Users/magzhanzhumabaev/Desktop/temp_project/apollo-nuxt/node_modules/vue/server-renderer/index.mjs';
 import { renderSSRHead } from 'file:///Users/magzhanzhumabaev/Desktop/temp_project/apollo-nuxt/node_modules/@unhead/ssr/dist/index.mjs';
 import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/magzhanzhumabaev/Desktop/temp_project/apollo-nuxt/node_modules/ofetch/dist/node.mjs';
 import destr from 'file:///Users/magzhanzhumabaev/Desktop/temp_project/apollo-nuxt/node_modules/destr/dist/index.mjs';
@@ -7593,7 +7594,32 @@ function publicAssetsURL(...path) {
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
 const getClientManifest = () => import('file:///Users/magzhanzhumabaev/Desktop/temp_project/apollo-nuxt/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getServerEntry = () => import('file:///Users/magzhanzhumabaev/Desktop/temp_project/apollo-nuxt/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
 const getSSRStyles = lazyCachedFunction(() => Promise.resolve().then(function () { return styles$1; }).then((r) => r.default || r));
+const getSSRRenderer = lazyCachedFunction(async () => {
+  const manifest = await getClientManifest();
+  if (!manifest) {
+    throw new Error("client.manifest is not available");
+  }
+  const createSSRApp = await getServerEntry();
+  if (!createSSRApp) {
+    throw new Error("Server bundle is not available");
+  }
+  const options = {
+    manifest,
+    renderToString: renderToString$1,
+    buildAssetsURL
+  };
+  const renderer = createRenderer(createSSRApp, options);
+  async function renderToString$1(input, context) {
+    const html = await renderToString(input, context);
+    if (process.env.NUXT_VITE_NODE_OPTIONS) {
+      renderer.rendererContext.updateManifest(await getClientManifest());
+    }
+    return `<${appRootTag}${` id="${appRootId}"` }>${html}</${appRootTag}>`;
+  }
+  return renderer;
+});
 const getSPARenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
   const spaTemplate = await Promise.resolve().then(function () { return _virtual__spaTemplate; }).then((r) => r.template).catch(() => "");
@@ -7656,7 +7682,7 @@ const renderer = defineRenderHandler(async (event) => {
     url,
     event,
     runtimeConfig: useRuntimeConfig(),
-    noSSR: !!true   ,
+    noSSR: event.context.nuxt?.noSSR || routeOptions.ssr === false && !islandContext || (false),
     head,
     error: !!ssrError,
     nuxt: void 0,
@@ -7665,7 +7691,7 @@ const renderer = defineRenderHandler(async (event) => {
     _payloadReducers: {},
     islandContext
   };
-  const renderer = await getSPARenderer() ;
+  const renderer = ssrContext.noSSR ? await getSPARenderer() : await getSSRRenderer();
   const _rendered = await renderer.renderToString(ssrContext).catch(async (error) => {
     if (ssrContext._renderResponse && error.message === "skipping render") {
       return {};
@@ -7799,7 +7825,7 @@ function renderPayloadJsonScript(opts) {
     type: "application/json",
     id: opts.id,
     innerHTML: contents,
-    "data-ssr": !(true )
+    "data-ssr": !(opts.ssrContext.noSSR)
   };
   if (opts.src) {
     payload["data-src"] = opts.src;

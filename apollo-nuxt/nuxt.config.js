@@ -1,6 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    ssr: false,
+    vite: {
+        server: {
+            hmr: {
+                protocol: 'ws',
+                host: '0.0.0.0'
+            }
+        }
+    },
     devServer: {
         host: '0.0.0.0',
         port: 2001

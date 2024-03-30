@@ -4,18 +4,18 @@ export default defineNuxtConfig({
         server: {
             hmr: {
                 protocol: 'ws',
-                host: '0.0.0.0',
+                host: '10.255.184.3',
                 port: '24678'
             }
         }
     },
     devServer: {
-        host: '0.0.0.0',
+        host: '10.255.184.3',
         port: 2001
     },
     nitro: {
         devProxy: {
-            host: 'localhost'
+            host: '10.255.184.3'
         }
     },
     hooks: {
@@ -24,7 +24,7 @@ export default defineNuxtConfig({
                 ...viteInlineConfig.server,
                 hmr: {
                     protocol: 'ws',
-                    host: '0.0.0.0',
+                    host: '10.255.184.3',
                     port: '24678'
                 }
             };

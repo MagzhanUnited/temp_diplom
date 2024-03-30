@@ -26,7 +26,7 @@ func Routes() *mux.Router {
 	apiRouter.HandleFunc("/person/{id}", controllers.DeletePersonEndpoint).Methods("DELETE")
 	apiRouter.HandleFunc("/person/{id}", controllers.UpdatePersonEndpoint).Methods("PUT")
 	apiRouter.HandleFunc("/upload", controllers.UploadFileEndpoint).Methods("POST")
-	apiRouter.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./uploaded/"))))
+	apiRouter.PathPrefix("/static/").Handler(http.StripPrefix("/api/static/", http.FileServer(http.Dir("./uploaded/"))))
 
 	return router
 }

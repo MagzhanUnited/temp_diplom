@@ -11,7 +11,7 @@ const model = ref([
             {
                 label: 'Landing',
                 icon: 'pi pi-fw pi-globe',
-                to: '/landing'
+                to: '/landing/'
             },
             {
                 label: 'Crud',

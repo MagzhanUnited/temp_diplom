@@ -3,7 +3,7 @@ export default defineNuxtConfig({
     vite: {
         server: {
             hmr: {
-                protocol: 'ws',
+                protocol: 'wss',
                 host: '10.255.184.3',
                 port: '24678'
             }
@@ -23,7 +23,7 @@ export default defineNuxtConfig({
             viteInlineConfig.server = {
                 ...viteInlineConfig.server,
                 hmr: {
-                    protocol: 'ws',
+                    protocol: 'wss',
                     host: '10.255.184.3',
                     port: '24678'
                 }

@@ -1,39 +1,39 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    vite: {
-        server: {
-            hmr: {
-                protocol: 'wss',
-                clientPort: 443,
-                path: 'hmr/',
-                host: '10.255.184.3',
-                port: '24678'
-            }
-        }
-    },
+    // vite: {
+    //     server: {
+    //         hmr: {
+    //             protocol: 'wss',
+    //             clientPort: 443,
+    //             path: 'hmr/',
+    //             host: '10.255.184.3',
+    //             port: '24678'
+    //         }
+    //     }
+    // },
     devServer: {
         host: '0.0.0.0',
         port: 2001
     },
-    nitro: {
-        devProxy: {
-            host: '0.0.0.0'
-        }
-    },
-    hooks: {
-        'vite:extendConfig'(viteInlineConfig, env) {
-            viteInlineConfig.server = {
-                ...viteInlineConfig.server,
-                hmr: {
-                    protocol: 'wss',
-                    clientPort: 443,
-                    path: 'hmr/',
-                    host: '10.255.184.3',
-                    port: '24678'
-                }
-            };
-        }
-    },
+    // nitro: {
+    //     devProxy: {
+    //         host: '0.0.0.0'
+    //     }
+    // },
+    // hooks: {
+    //     'vite:extendConfig'(viteInlineConfig, env) {
+    //         viteInlineConfig.server = {
+    //             ...viteInlineConfig.server,
+    //             hmr: {
+    //                 protocol: 'wss',
+    //                 clientPort: 443,
+    //                 path: 'hmr/',
+    //                 host: '10.255.184.3',
+    //                 port: '24678'
+    //             }
+    //         };
+    //     }
+    // },
     typescript: false,
     app: {
         baseURL: '/admin',

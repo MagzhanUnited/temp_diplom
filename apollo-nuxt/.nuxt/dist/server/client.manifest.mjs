@@ -1,1 +1,0 @@
-export { default } from "file:///Users/magzhanzhumabaev/Desktop/temp_project/apollo-nuxt/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"

@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     },
     nitro: {
         devProxy: {
-            host: '10.255.184.3'
+            host: '0.0.0.0'
         }
     },
     hooks: {

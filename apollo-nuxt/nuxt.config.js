@@ -4,7 +4,8 @@ export default defineNuxtConfig({
         server: {
             hmr: {
                 protocol: 'wss',
-                clientPort: 443
+                clientPort: 443,
+                path: 'hmr/'
             }
         }
     },
@@ -23,7 +24,8 @@ export default defineNuxtConfig({
                 ...viteInlineConfig.server,
                 hmr: {
                     protocol: 'wss',
-                    clientPort: 443
+                    clientPort: 443,
+                    path: 'hmr/'
                 }
             };
         }

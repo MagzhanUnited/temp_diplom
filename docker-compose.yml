@@ -29,9 +29,6 @@ services:
     container_name: nginx
     restart: always
     ports:
-      - "3001:80"
-      - "5002:8000"
-      - "8081:81"
       - "443:443"
     volumes:
       - /certificates:/certs

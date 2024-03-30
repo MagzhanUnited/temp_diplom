@@ -6,7 +6,7 @@ export default defineNuxtConfig({
                 protocol: 'wss',
                 clientPort: 443,
                 path: 'hmr/',
-                host: 'localhost',
+                host: '10.255.184.3',
                 port: '24678'
             }
         }
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
                     protocol: 'wss',
                     clientPort: 443,
                     path: 'hmr/',
-                    host: 'localhost',
+                    host: '10.255.184.3',
                     port: '24678'
                 }
             };

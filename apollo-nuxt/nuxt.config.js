@@ -10,7 +10,7 @@ export default defineNuxtConfig({
         }
     },
     devServer: {
-        host: '10.255.184.3',
+        host: '0.0.0.0',
         port: 2001
     },
     nitro: {

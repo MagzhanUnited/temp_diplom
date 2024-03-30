@@ -5,7 +5,8 @@ export default defineNuxtConfig({
             hmr: {
                 protocol: 'wss',
                 clientPort: 443,
-                path: 'hmr/'
+                path: 'hmr/',
+                host: 'localhost'
             }
         }
     },
@@ -25,7 +26,8 @@ export default defineNuxtConfig({
                 hmr: {
                     protocol: 'wss',
                     clientPort: 443,
-                    path: 'hmr/'
+                    path: 'hmr/',
+                    host: 'localhost'
                 }
             };
         }

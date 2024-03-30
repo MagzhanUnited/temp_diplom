@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    ssr: false,
     // vite: {
     //     server: {
     //         hmr: {
@@ -36,7 +37,7 @@ export default defineNuxtConfig({
     // },
     typescript: false,
     app: {
-        // baseURL: '/admin',
+        baseURL: '/admin',
         head: {
             title: 'PrimeVue Apollo Nuxt',
             link: [

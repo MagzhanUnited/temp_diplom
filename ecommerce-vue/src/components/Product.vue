@@ -166,7 +166,7 @@
       <img
         height="348"
         width="351"
-        src="https://s3.bi.group/biclick/content-manager/callback_3272c70d9f.svg"
+        src="https://s3.bi.group/biclick/content-manager/callback_f359377e8b.svg"
         alt=""
         class="c-gZsuB"
         style="margin-left: 20%"

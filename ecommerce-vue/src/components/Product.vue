@@ -44,6 +44,7 @@
           style="width: 250px"
           @search="onSearch"
           v-model="filter"
+          @v-on:event="handle(event)"
         />
         <a-row :gutter="[20, 20]" v-if="items">
           <a-col
@@ -118,11 +119,7 @@
         <h3 style="color: grey">и расскажем подробнее о проекте.</h3>
       </div>
       <div>
-        <a-form
-          :form="form"
-          @submit="handleSubmit"
-          style="margin-left: 30%; align-items: start"
-        >
+        <a-form style="margin-left: 30%; align-items: start">
           <a-form-item class="custom-label" label="">
             <div class="input-container">
               <span class="custom-label-text">Номер телефона</span>
@@ -159,6 +156,7 @@
                 type="primary"
                 html-type="submit"
                 style="width: 400px; height: 50px"
+                @click="orderCall()"
                 >Заказать звонок</a-button
               >
             </div>
@@ -221,12 +219,22 @@ export default {
       "sortDescendingAction",
     ]),
     // setItemInStore(data) {},
-    async onSearch() {
-      console.log("filter:", this.filter);
+    async orderCall() {
+      console.log("order:", this.order);
+      await axios.post("https://realestate.enu.kz/api/order", this.order, {
+        withCredentials: true,
+      });
     },
-    async getAllProducts(cat) {
+    async onSearch() {
+      // console.log("filter:", this.filter);
+      // console.log("event:", event);
+      this.getAllProducts("Все", this.filter);
+    },
+    async getAllProducts(cat, text) {
+      console.log("text:", text);
+      if (text == "") text = undefined;
       const response = await axios(
-        `https://realestate.enu.kz/api/residentialas/${cat}`,
+        `https://realestate.enu.kz/api/residentialas/${cat}/${text}`,
         {
           withCredentials: true,
         }
@@ -237,8 +245,12 @@ export default {
       this.setItems(response.data.data);
     },
     async getProductByCategory(cat) {
-      await this.getAllProducts(cat);
+      await this.getAllProducts(cat, "");
       // this.$router.push('/');
+    },
+    handle(event) {
+      console.log("event:", event);
+      this.getAllProducts("Все", event);
     },
     handleSubmit() {
       // Handle form submission here, for example, send data to the server

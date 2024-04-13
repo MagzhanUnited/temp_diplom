@@ -41,7 +41,7 @@
         <a-input-search
           placeholder="input search text"
           enter-button
-          style="width: 250px"
+          style="width: 250px; margin-bottom: 1dvh"
           @search="onSearch"
           v-model="filter"
           @v-on:event="handle(event)"
@@ -224,6 +224,7 @@ export default {
       await axios.post("https://realestate.enu.kz/api/order", this.order, {
         withCredentials: true,
       });
+      this.order = {};
     },
     async onSearch() {
       // console.log("filter:", this.filter);

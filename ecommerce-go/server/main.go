@@ -24,7 +24,7 @@ func main() {
 	c := cors.New(cors.Options{
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE"},
 		AllowedHeaders:   []string{"Content-Type", "Origin", "Accept", "*"},
-		AllowedOrigins:   []string{"http://10.255.184.3:2001", "http://10.255.184.3:2003", "https://realestate.enu.kz"},
+		AllowedOrigins:   []string{"http://10.255.184.3:2001", "http://10.255.184.3:2003", "http://localhost:8080", "https://realestate.enu.kz"},
 		AllowCredentials: true, // Enable credentials
 	})
 

@@ -18,6 +18,7 @@ func Routes() *mux.Router {
 	apiRouter.HandleFunc("/person", controllers.CreatePersonEndpoint).Methods("POST")
 	apiRouter.HandleFunc("/residentialas/{category}", controllers.GetResidentialas).Methods("GET")
 	apiRouter.HandleFunc("/residential", controllers.CreateResidential).Methods("POST")
+	apiRouter.HandleFunc("/order", controllers.CreateOrder).Methods("POST")
 	apiRouter.HandleFunc("/residential/{id}", controllers.DeleteResidentEndpoint).Methods("DELETE")
 	apiRouter.HandleFunc("/residential/{id}", controllers.GetResidentEndpoint).Methods("GET")
 	apiRouter.HandleFunc("/auth", controllers.Auths).Methods("POST")

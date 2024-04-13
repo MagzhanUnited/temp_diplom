@@ -20,10 +20,16 @@ var GetResidentialas = http.HandlerFunc(func(response http.ResponseWriter, reque
 	var residentialas []*models.Residential
 	params := mux.Vars(request)
 	category := params["category"]
+	text := params["text"]
+	fmt.Println("text:", text)
 	collection := client.Database("resident").Collection("residentials")
 	filter := bson.M{}
 	if category != "Все" {
 		filter["category"] = category
+	}
+	if text != "undefined" {
+		fmt.Println("HERE")
+		filter["title"] = primitive.Regex{Pattern: "^" + text, Options: ""}
 	}
 	cursor, err := collection.Find(context.TODO(), filter)
 	if err != nil {
@@ -44,6 +50,28 @@ var GetResidentialas = http.HandlerFunc(func(response http.ResponseWriter, reque
 		return
 	}
 	middlewares.SuccessArrResidentialasRespond(residentialas, response)
+})
+
+var CreateOrder = http.HandlerFunc(func(response http.ResponseWriter, request *http.Request) {
+	var order models.Order
+	err := json.NewDecoder(request.Body).Decode(&order)
+	if err != nil {
+		middlewares.ServerErrResponse(err.Error(), response)
+		return
+	}
+	if ok, errors := validators.ValidateInputs(order); !ok {
+		middlewares.ValidationResponse(errors, response)
+		return
+	}
+	collection := client.Database("resident").Collection("orders")
+	result, err := collection.InsertOne(context.TODO(), order)
+	if err != nil {
+		middlewares.ServerErrResponse(err.Error(), response)
+		return
+	}
+	res, _ := json.Marshal(result.InsertedID)
+	middlewares.SuccessResponse(`Inserted at `+strings.Replace(string(res), `"`, ``, 2), response)
+
 })
 
 var CreateResidential = http.HandlerFunc(func(response http.ResponseWriter, request *http.Request) {

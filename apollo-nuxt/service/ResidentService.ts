@@ -2,7 +2,7 @@ import { getHeader } from '../config';
 import api from './api';
 const ResidentService = {
     async getResidents(category: string) {
-        return await api.get(`/residentialas/${category}`, { headers: getHeader() });
+        return await api.get(`/residentialas/${category}/undefined`, { headers: getHeader() });
     },
     async postResident(request: any) {
         console.log('request:', request);
